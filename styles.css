@@ -1,5 +1,23 @@
-html, body {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
+.color-block {
+  margin-top: 100px;
+  margin-left: 40px;
+
+  position: relative;
+  width: 250px;
+  height: 150px;
+  border-radius: 5px;
+  background-color: cornflowerblue;
+}
+
+.hand {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  cursor: hand;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  background-color: white;
+  border-radius: 10px;
 }

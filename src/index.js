@@ -1,6 +1,6 @@
 import ColorManager from './colorManager';
 
-import './styles.css';
+import './styles.scss';
 
 const colorManager = new ColorManager();
 

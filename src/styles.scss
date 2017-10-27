@@ -6,6 +6,15 @@ $hue-width: 250px;
 $hue-height: 14px;
 $hue-border-radius: 7px;
 
+$color-white: #fff;
+$color-black: #000;
+$color-red: rgb(255, 0, 0);
+$color-yellow: rgb(255, 255, 0);
+$color-green: rgb(0, 255, 0);
+$color-cyan: rgb(0, 255, 255);
+$color-blue: rgb(0, 0, 255);
+$color-magenta: rgb(255, 0, 255);
+
 .saturation-brightness-picker {
   position: relative;
   width: $saturation-brightness-width;
@@ -16,7 +25,7 @@ $hue-border-radius: 7px;
 }
 
 .saturation-gradient {
-  background: linear-gradient(to left, rgba(255, 255 ,255, 0), #fff);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), $color-white);
   position: absolute;
   width: $saturation-brightness-width;
   height: $saturation-brightness-height;
@@ -24,7 +33,7 @@ $hue-border-radius: 7px;
 }
 
 .brightness-gradient {
-  background: linear-gradient(to bottom, transparent, #000);
+  background: linear-gradient(to bottom, transparent, $color-black);
   position: absolute;
   width: $saturation-brightness-width;
   height: $saturation-brightness-height;
@@ -36,7 +45,10 @@ $hue-border-radius: 7px;
   width: $hue-width;
   height: $hue-height;
   border-radius: $hue-border-radius;
-  background: linear-gradient(to right, rgb(255, 5, 5), rgb(255, 255, 5), rgb(5, 255, 5), rgb(5, 255, 255), rgb(5, 5, 255), rgb(255, 5, 255), rgb(255, 5, 5));
+  background: linear-gradient(
+    to right, $color-red, $color-yellow, $color-green,
+    $color-cyan, $color-blue, $color-magenta, $color-red
+  );
 }
 
 .hand {

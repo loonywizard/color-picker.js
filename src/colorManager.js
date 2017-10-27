@@ -48,12 +48,12 @@ export default function ColorManager() {
       brightness = color.brightness;
     }
 
-    notifySubscribers();
-
     let rgbColors = convertHsbToRgb(hue, saturation, brightness);
     red = rgbColors.red;
     blue = rgbColors.blue;
     green = rgbColors.green;
+
+    notifySubscribers();
   };
 
   this.setHue = (hue) => {

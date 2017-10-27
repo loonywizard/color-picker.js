@@ -41,20 +41,20 @@ function SaturationBrightnessPicker(colorManager) {
 
   const sliderPosition = {
     x: saturation * 250 / 100,
-    y: brightness * 150 / 100,
+    y: (100 - brightness) * 150 / 100,
   };
 
   const hand = new Hand({
     position: sliderPosition,
     movingArea: { x: { from: 0, to: width }, y: { from: 0, to: height } },
     parent: div,
+    parentSize: { x: width, y: height },
     onHandMove: handleHandMove,
   });
 
   div.appendChild(hand.render());
 
   this.render = () => div;
-  this.setHandPosition = hand.setBlocklPosition;
 }
 
 function HuePicker(colorManager) {
@@ -76,13 +76,13 @@ function HuePicker(colorManager) {
     position: sliderPosition,
     movingArea: { x: { from: 0, to: 250 }, y: { from: 7, to: 7 } },
     parent: div,
+    parentSize: { x: 250, y: 14 },
     onHandMove: calculateHue,
   });
 
   div.appendChild(hand.render());
 
   this.render = () => div;
-  this.setHandPosition = hand.setBlocklPosition;
 }
 
 export default function PickPicker(colorManager) {

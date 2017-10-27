@@ -7,6 +7,7 @@
  *  movingArea: { x, y } - constraints for position, where hand can be
  *  position: { x, y }
  *  parent: reference to parent DOM Node
+ *  parentSize: { x, y }
  *  onHandMove: a callback, that we should call, when hand was moved,
  *  we pass hand position to onHandMove
  * @constructor
@@ -16,6 +17,7 @@ export default function Hand(args) {
     movingArea,
     position,
     parent,
+    parentSize,
     onHandMove,
   } = args;
 
@@ -24,10 +26,12 @@ export default function Hand(args) {
   const div = document.createElement('div');
   div.className = 'hand';
 
-  this.setBlocklPosition = () => {
-    div.style.top = `${position.y / parent.clientHeight * 100}%`;
-    div.style.left = `${position.x / parent.clientWidth * 100}%`;
+  const setHandPosition = () => {
+    div.style.top = `${position.y / parentSize.y * 100}%`;
+    div.style.left = `${position.x / parentSize.x * 100}%`;
   };
+
+  setHandPosition();
 
   const changePosition = (mouseCoordinates) => {
     if (mouseCoordinates.x < movingArea.x.from) {
@@ -46,7 +50,7 @@ export default function Hand(args) {
       position.y = mouseCoordinates.y;
     }
 
-    this.setBlocklPosition();
+    setHandPosition();
     onHandMove(position);
   };
 

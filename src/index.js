@@ -70,9 +70,17 @@ function Hand(args) {
   };
 }
 
-function SaturationBrightnessBlock() {
+function SaturationBrightnessPicker() {
   const div = document.createElement('div');
-  div.className = 'color-block';
+  div.className = 'saturation-brightness-picker';
+
+  const saturationGradient = document.createElement('div');
+  saturationGradient.className = 'saturation-gradient';
+  div.appendChild(saturationGradient);
+
+  const brightnessGradient = document.createElement('div');
+  brightnessGradient.className = 'brightness-gradient';
+  div.appendChild(brightnessGradient);
 
   const width = 250;
   const height = 150;
@@ -86,10 +94,12 @@ function SaturationBrightnessBlock() {
 
   colorManager.subscribe(updateColor);
 
+  const { saturation, brightness } = colorManager.getColor();
+
   // TODO calc here position of slider base by color
   const sliderPosition = {
-    x: 50,
-    y: 70,
+    x: saturation * 250 / 100,
+    y: brightness * 150 / 100,
   };
 
   const hand = new Hand({
@@ -132,10 +142,10 @@ function HuePicker() {
   this.setHandPosition = hand.setBlocklPosition;
 }
 
-const saturationBrightnessBlock = new SaturationBrightnessBlock();
+const saturationBrightnessPicker = new SaturationBrightnessPicker();
 const huePicker = new HuePicker();
 
-document.body.appendChild(saturationBrightnessBlock.render());
+document.body.appendChild(saturationBrightnessPicker.render());
 document.body.appendChild(huePicker.render());
-saturationBrightnessBlock.setHandPosition();
+saturationBrightnessPicker.setHandPosition();
 huePicker.setHandPosition();

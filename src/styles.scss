@@ -15,6 +15,28 @@ $color-cyan: rgb(0, 255, 255);
 $color-blue: rgb(0, 0, 255);
 $color-magenta: rgb(255, 0, 255);
 
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.picker {
+  border-radius: 5px;
+  background: $color-white;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  padding: 20px 10px;
+}
+
 .saturation-brightness-picker {
   position: relative;
   width: $saturation-brightness-width;
@@ -59,5 +81,6 @@ $color-magenta: rgb(255, 0, 255);
   margin-top: -10px;
   margin-left: -10px;
   border-radius: 10px;
-  background: black;
+  background: $color-white;
+  box-shadow: rgba(84,82,87,0.15) 0 0 0 1px, rgba(84,82,87,0.2) 0 2px 5px;
 }

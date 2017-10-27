@@ -109,7 +109,7 @@ function SaturationBrightnessPicker() {
     calculateBrightness(handPosition);
   }
 
-  const { saturation, brightness } = colorManager.getColor();
+  const { saturation, brightness } = colorManager.getColorHSB();
 
   // TODO calc here position of slider base by color
   const sliderPosition = {
@@ -161,7 +161,7 @@ function HuePicker() {
 const app = document.getElementById('app');
 
 function setAppBackground() {
-  const { hue, saturation, brightness } = colorManager.getColor();
+  const { hue, saturation, brightness } = colorManager.getColorHSB();
   const { r, g, b } = convertHsbToRgb(hue, saturation, brightness);
   app.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }

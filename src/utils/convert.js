@@ -1,36 +1,44 @@
-export function convertHsbToRgb(h, s, v) {
-  s = s / 100;
-  v = v / 100;
+/**
+ * That function converts HSB color to RGB model
+ *
+ * @param hue - [0, 360]
+ * @param saturation - [0, 100]
+ * @param brightness - [0, 100]
+ * @returns {{red: number, green: number, blue: number}}
+ */
+export function convertHsbToRgb(hue, saturation, brightness) {
+  saturation = saturation / 100;
+  brightness = brightness / 100;
 
-  const c = v * s;
-  const x = c * (1 - Math.abs((h / 60) % 2 - 1));
-  const m = v - c;
+  const c = brightness * saturation;
+  const x = c * (1 - Math.abs((hue / 60) % 2 - 1));
+  const m = brightness - c;
 
-  let r;
-  let g;
-  let b;
+  let red;
+  let green;
+  let blue;
 
-  if (h < 60) {
-    r = c; g = x; b = 0;
-  } else if (h < 120) {
-    r = x; g = c; b = 0;
-  } else if (h < 180) {
-    r = 0; g = c; b = x;
-  } else if (h < 240) {
-    r = 0; g = x; b = c;
-  } else if (h < 300) {
-    r = x; g = 0; b = c;
+  if (hue < 60) {
+    red = c; green = x; blue = 0;
+  } else if (hue < 120) {
+    red = x; green = c; blue = 0;
+  } else if (hue < 180) {
+    red = 0; green = c; blue = x;
+  } else if (hue < 240) {
+    red = 0; green = x; blue = c;
+  } else if (hue < 300) {
+    red = x; green = 0; blue = c;
   } else {
-    r = c; g = 0; b = x;
+    red = c; green = 0; blue = x;
   }
 
-  r = (r + m) * 255;
-  g = (g + m) * 255;
-  b = (b + m) * 255;
+  red = (red + m) * 255;
+  green = (green + m) * 255;
+  blue = (blue + m) * 255;
 
   return {
-    r: Math.round(r),
-    g: Math.round(g),
-    b: Math.round(b),
+    red: Math.round(red),
+    green: Math.round(green),
+    blue: Math.round(blue),
   };
 }

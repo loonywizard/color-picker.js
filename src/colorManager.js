@@ -1,5 +1,11 @@
 import { getRandomInt } from './utils/random';
+import { convertHsbToRgb } from './utils/convert';
 
+/**
+ * ColorManager manages color state in the color picker
+ * It has get/set methods for colors,
+ * You can subscribe any callback for color changes
+ * */
 export default function ColorManager() {
   const getRandomHue = () => getRandomInt(0, 360);
   const getRandomSaturation = () => getRandomInt(0, 100);
@@ -18,8 +24,10 @@ export default function ColorManager() {
   let hue = getRandomHue();
   let saturation = getRandomSaturation();
   let brightness = getRandomBrightness();
+  let { red, green, blue } = convertHsbToRgb(hue, saturation, brightness);
 
-  this.getColor = () => ({ hue, saturation, brightness });
+  this.getColorHSB = () => ({ hue, saturation, brightness });
+  this.getColorRGB = () => ({ red, green, blue });
   this.getHue = () => hue;
   this.getSaturation = () => saturation;
   this.getBrightness = () => brightness;

@@ -1,5 +1,7 @@
 import ColorManager from './colorManager';
 
+import './styles.css';
+
 const colorManager = new ColorManager();
 
 function Hand(args) {

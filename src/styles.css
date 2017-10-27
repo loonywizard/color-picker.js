@@ -8,7 +8,7 @@
 }
 
 .saturation-gradient {
-  background: -webkit-linear-gradient(right, rgba(255, 255 ,255, 0), #fff);
+  background: linear-gradient(to left, rgba(255, 255 ,255, 0), #fff);
   position: absolute;
   width: 250px;
   height: 150px;
@@ -16,7 +16,7 @@
 }
 
 .brightness-gradient {
-  background: -webkit-linear-gradient(top, transparent, #000);
+  background: linear-gradient(to bottom, transparent, #000);
   position: absolute;
   width: 250px;
   height: 150px;

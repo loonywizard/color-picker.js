@@ -1,6 +1,4 @@
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+import { getRandomInt } from './utils/random';
 
 function ColorManager() {
   const getRandomHue = () => getRandomInt(0, 360);

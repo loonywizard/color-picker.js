@@ -28,7 +28,7 @@
   width: 250px;
   height: 14px;
   border-radius: 7px;
-  background-color: white;
+  background: linear-gradient(to right, rgb(255, 5, 5), rgb(255, 255, 5), rgb(5, 255, 5), rgb(5, 255, 255), rgb(5, 5, 255), rgb(255, 5, 255), rgb(255, 5, 5));
 }
 
 .hand {

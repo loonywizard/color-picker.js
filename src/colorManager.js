@@ -28,11 +28,16 @@ export default function ColorManager() {
 
   this.getColorHSB = () => ({ hue, saturation, brightness });
   this.getColorRGB = () => ({ red, green, blue });
+
   this.getHue = () => hue;
   this.getSaturation = () => saturation;
   this.getBrightness = () => brightness;
 
-  this.setColor = (color) => {
+  this.getRed = () => red;
+  this.getGreen = () => green;
+  this.getBlue = () => blue;
+
+  this.setColorHSB = (color) => {
     if (color.hue) {
       hue = color.hue;
     }
@@ -42,15 +47,22 @@ export default function ColorManager() {
     if (color.brightness) {
       brightness = color.brightness;
     }
+
     notifySubscribers();
+
+    let rgbColors = convertHsbToRgb(hue, saturation, brightness);
+    red = rgbColors.red;
+    blue = rgbColors.blue;
+    green = rgbColors.green;
   };
+
   this.setHue = (hue) => {
-    this.setColor({ hue });
+    this.setColorHSB({ hue });
   };
   this.setSaturation = (saturation) => {
-    this.setColor({ saturation });
+    this.setColorHSB({ saturation });
   };
   this.setBrightness = (brightness) => {
-    this.setColor({ brightness });
+    this.setColorHSB({ brightness });
   };
 }

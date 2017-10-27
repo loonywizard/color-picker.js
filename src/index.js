@@ -162,8 +162,8 @@ const app = document.getElementById('app');
 
 function setAppBackground() {
   const { hue, saturation, brightness } = colorManager.getColorHSB();
-  const { r, g, b } = convertHsbToRgb(hue, saturation, brightness);
-  app.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  const { red, green, blue } = colorManager.getColorRGB();
+  app.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
 
 setAppBackground();

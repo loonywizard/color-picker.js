@@ -1,5 +1,6 @@
 import { getRandomInt } from './utils/random';
 import { convertHsbToRgb } from './utils/convert';
+import { HUE_RANGE, SATURATION_RANGE, BRIGHTNESS_RANGE } from './consts';
 
 /**
  * ColorManager manages color state in the color picker
@@ -7,9 +8,9 @@ import { convertHsbToRgb } from './utils/convert';
  * You can subscribe any callback for color changes
  * */
 export default function ColorManager() {
-  const getRandomHue = () => getRandomInt(0, 360);
-  const getRandomSaturation = () => getRandomInt(0, 100);
-  const getRandomBrightness = () => getRandomInt(0, 100);
+  const getRandomHue = () => getRandomInt(HUE_RANGE.MIN, HUE_RANGE.MAX);
+  const getRandomSaturation = () => getRandomInt(SATURATION_RANGE.MIN, SATURATION_RANGE.MAX);
+  const getRandomBrightness = () => getRandomInt(BRIGHTNESS_RANGE.MIN, BRIGHTNESS_RANGE.MAX);
 
   const subscribers = [];
 

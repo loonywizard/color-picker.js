@@ -1,19 +1,28 @@
 import Hand from './hand';
+import {
+  PICKER_WIDTH,
+  PICKER_HEIGHT,
+  SATURATION_BRIGHTNESS_PICKER_HEIGHT,
+  HUE_RANGE,
+  SATURATION_RANGE,
+  BRIGHTNESS_RANGE,
+} from './consts';
 
 function SaturationBrightnessPicker(colorManager) {
+  const pickerWidth = PICKER_WIDTH;
+  const pickerHeight = SATURATION_BRIGHTNESS_PICKER_HEIGHT;
+
   const div = document.createElement('div');
+  const saturationGradient = document.createElement('div');
+  const brightnessGradient = document.createElement('div');
+
   div.className = 'saturation-brightness-picker';
 
-  const saturationGradient = document.createElement('div');
   saturationGradient.className = 'saturation-gradient';
   div.appendChild(saturationGradient);
 
-  const brightnessGradient = document.createElement('div');
   brightnessGradient.className = 'brightness-gradient';
   div.appendChild(brightnessGradient);
-
-  const width = 250;
-  const height = 150;
 
   const updateColor = () => {
     const hue = colorManager.getHue();
@@ -25,11 +34,13 @@ function SaturationBrightnessPicker(colorManager) {
   colorManager.subscribe(updateColor);
 
   function calculateSaturation(handPosition) {
-    colorManager.setSaturation(handPosition.x * 100 / 250);
+    colorManager.setSaturation(handPosition.x * SATURATION_RANGE.MAX / pickerWidth);
   }
 
   function calculateBrightness(handPosition) {
-    colorManager.setBrightness((150 - handPosition.y) * 100 / 150);
+    colorManager.setBrightness(
+      (pickerHeight - handPosition.y) * BRIGHTNESS_RANGE.MAX / pickerHeight
+    );
   }
 
   function handleHandMove(handPosition) {
@@ -40,15 +51,15 @@ function SaturationBrightnessPicker(colorManager) {
   const { saturation, brightness } = colorManager.getColorHSB();
 
   const sliderPosition = {
-    x: saturation * 250 / 100,
-    y: (100 - brightness) * 150 / 100,
+    x: saturation * pickerWidth / SATURATION_RANGE.MAX,
+    y: (BRIGHTNESS_RANGE.MAX - brightness) * pickerHeight / BRIGHTNESS_RANGE.MAX,
   };
 
   const hand = new Hand({
     position: sliderPosition,
-    movingArea: { x: { from: 0, to: width }, y: { from: 0, to: height } },
+    movingArea: { x: { from: 0, to: pickerWidth }, y: { from: 0, to: pickerHeight } },
     parent: div,
-    parentSize: { x: width, y: height },
+    parentSize: { x: pickerWidth, y: pickerHeight },
     onHandMove: handleHandMove,
   });
 
@@ -64,19 +75,22 @@ function HuePicker(colorManager) {
   const hue = colorManager.getHue();
 
   const sliderPosition = {
-    x: hue * 250 / 360,
-    y: 7,
+    x: hue * PICKER_WIDTH / HUE_RANGE.MAX,
+    y: PICKER_HEIGHT / 2,
   };
 
   function calculateHue(handPosition) {
-    colorManager.setHue(handPosition.x * 360 / 250);
+    colorManager.setHue(handPosition.x * HUE_RANGE.MAX / PICKER_WIDTH);
   }
 
   const hand = new Hand({
     position: sliderPosition,
-    movingArea: { x: { from: 0, to: 250 }, y: { from: 7, to: 7 } },
+    movingArea: {
+      x: { from: HUE_RANGE.MIN, to: HUE_RANGE.MAX },
+      y: { from: PICKER_HEIGHT / 2, to: PICKER_HEIGHT / 2 }
+      },
     parent: div,
-    parentSize: { x: 250, y: 14 },
+    parentSize: { x: PICKER_WIDTH, y: PICKER_HEIGHT },
     onHandMove: calculateHue,
   });
 

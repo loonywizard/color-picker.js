@@ -39,13 +39,13 @@ export default function ColorManager() {
   this.getBlue = () => blue;
 
   this.setColorHSB = (color) => {
-    if (color.hue) {
+    if (color.hue !== undefined) {
       hue = color.hue;
     }
-    if (color.saturation) {
+    if (color.saturation !== undefined) {
       saturation = color.saturation;
     }
-    if (color.brightness) {
+    if (color.brightness !== undefined) {
       brightness = color.brightness;
     }
 

@@ -86,7 +86,7 @@ function HuePicker(colorManager) {
   const hand = new Hand({
     position: sliderPosition,
     movingArea: {
-      x: { from: HUE_RANGE.MIN, to: HUE_RANGE.MAX },
+      x: { from: 0, to: PICKER_WIDTH },
       y: { from: PICKER_HEIGHT / 2, to: PICKER_HEIGHT / 2 }
       },
     parent: div,

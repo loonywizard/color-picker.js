@@ -31,6 +31,11 @@ html, body {
 }
 
 .rgb-display {
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.4rem;
   color: $color-black;
 }
 
@@ -38,7 +43,7 @@ html, body {
   border-radius: 5px;
   background: $color-white;
   border: 1px solid rgba(0, 0, 0, 0.11);
-  padding: 20px 10px;
+  padding: 10px 10px 20px 10px;
 }
 
 .saturation-brightness-picker {

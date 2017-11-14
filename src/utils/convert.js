@@ -42,3 +42,20 @@ export function convertHsbToRgb(hue, saturation, brightness) {
     blue: Math.round(blue),
   };
 }
+
+/**
+ * That function converts three RGB colors to string
+ * for example: 255 183 0 --> #ff00b7
+ *
+ * @param red - [0, 255]
+ * @param green - [0, 255]
+ * @param blue - [0, 255]
+ * @returns string
+ */
+export function convertRgbToString(red, green, blue) {
+  const hexRed = red >= 16 ? red.toString(16) : '0' + red.toString(16);
+  const hexBlue = green >= 16 ? green.toString(16) : '0' + green.toString(16);
+  const hexGreen = blue >= 16 ? blue.toString(16) : '0' + blue.toString(16);
+
+  return `#${hexRed}${hexGreen}${hexBlue}`;
+}

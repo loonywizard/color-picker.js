@@ -15,7 +15,7 @@ export default function ColorManager() {
   const subscribers = [];
 
   const notifySubscribers = () => {
-    subscribers.forEach(cb => { cb(); });
+    subscribers.forEach((cb) => { cb(); });
   };
 
   this.subscribe = (callback) => {
@@ -49,7 +49,7 @@ export default function ColorManager() {
       brightness = color.brightness;
     }
 
-    let rgbColors = convertHsbToRgb(hue, saturation, brightness);
+    const rgbColors = convertHsbToRgb(hue, saturation, brightness);
     red = rgbColors.red;
     blue = rgbColors.blue;
     green = rgbColors.green;
@@ -57,13 +57,13 @@ export default function ColorManager() {
     notifySubscribers();
   };
 
-  this.setHue = (hue) => {
-    this.setColorHSB({ hue });
+  this.setHue = (value) => {
+    this.setColorHSB({ hue: value });
   };
-  this.setSaturation = (saturation) => {
-    this.setColorHSB({ saturation });
+  this.setSaturation = (value) => {
+    this.setColorHSB({ saturation: value });
   };
-  this.setBrightness = (brightness) => {
-    this.setColorHSB({ brightness });
+  this.setBrightness = (value) => {
+    this.setColorHSB({ brightness: value });
   };
 }

@@ -11,7 +11,6 @@ const rgbDisplay = new RGBDisplay(colorManager);
 const app = document.getElementById('app');
 
 function setAppBackground() {
-  const { hue, saturation, brightness } = colorManager.getColorHSB();
   const { red, green, blue } = colorManager.getColorRGB();
   app.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }

@@ -39,9 +39,8 @@ function SaturationBrightnessPicker(colorManager) {
   }
 
   function calculateBrightness(handPosition) {
-    colorManager.setBrightness(
-      (pickerHeight - handPosition.y) * BRIGHTNESS_RANGE.MAX / pickerHeight
-    );
+    const brightness = (pickerHeight - handPosition.y) * BRIGHTNESS_RANGE.MAX / pickerHeight;
+    colorManager.setBrightness(brightness);
   }
 
   function handleHandMove(handPosition) {
@@ -88,8 +87,8 @@ function HuePicker(colorManager) {
     position: sliderPosition,
     movingArea: {
       x: { from: 0, to: HUE_PICKER_WIDTH },
-      y: { from: HUE_PICKER_HEIGHT / 2, to: HUE_PICKER_HEIGHT / 2 }
-      },
+      y: { from: HUE_PICKER_HEIGHT / 2, to: HUE_PICKER_HEIGHT / 2 },
+    },
     parent: div,
     parentSize: { x: HUE_PICKER_WIDTH, y: HUE_PICKER_HEIGHT },
     onHandMove: calculateHue,

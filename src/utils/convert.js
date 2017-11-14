@@ -7,12 +7,12 @@
  * @returns {{red: number, green: number, blue: number}}
  */
 export function convertHsbToRgb(hue, saturation, brightness) {
-  saturation = saturation / 100;
-  brightness = brightness / 100;
+  const normalizedSaturation = saturation / 100;
+  const normalizedBrightness = brightness / 100;
 
-  const c = brightness * saturation;
+  const c = normalizedBrightness * normalizedSaturation;
   const x = c * (1 - Math.abs((hue / 60) % 2 - 1));
-  const m = brightness - c;
+  const m = normalizedBrightness - c;
 
   let red;
   let green;
@@ -53,9 +53,9 @@ export function convertHsbToRgb(hue, saturation, brightness) {
  * @returns string
  */
 export function convertRgbToString(red, green, blue) {
-  const hexRed = red >= 16 ? red.toString(16) : '0' + red.toString(16);
-  const hexBlue = green >= 16 ? green.toString(16) : '0' + green.toString(16);
-  const hexGreen = blue >= 16 ? blue.toString(16) : '0' + blue.toString(16);
+  const hexRed = red >= 16 ? red.toString(16) : `0${red.toString(16)}`;
+  const hexBlue = green >= 16 ? green.toString(16) : `0${green.toString(16)}`;
+  const hexGreen = blue >= 16 ? blue.toString(16) : `0${blue.toString(16)}`;
 
   return `#${hexRed}${hexGreen}${hexBlue}`;
 }

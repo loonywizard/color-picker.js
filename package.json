@@ -4,7 +4,8 @@
   "description": "Color picker",
   "main": "src/index.js",
   "scripts": {
-    "webpack": "webpack --config webpack.config.js"
+    "webpack": "webpack --config webpack.config.js",
+    "webpack-watch": "webpack --config webpack.config.js --watch"
   },
   "author": "vladimirsuperwizard@gmail.com",
   "license": "ISC",

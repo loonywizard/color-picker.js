@@ -30,6 +30,10 @@ html, body {
   align-items: center;
 }
 
+.rgb-display {
+  color: $color-black;
+}
+
 .picker-container {
   border-radius: 5px;
   background: $color-white;

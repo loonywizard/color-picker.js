@@ -1,10 +1,10 @@
 import ColorManager from './colorManager';
-import PickPicker from './pickPicker';
+import HSBPicker from './hsbPicker';
 import './styles.scss';
 
 const colorManager = new ColorManager();
 
-const pickPicker = new PickPicker(colorManager);
+const picker = new HSBPicker(colorManager);
 
 const app = document.getElementById('app');
 
@@ -18,8 +18,8 @@ setAppBackground();
 
 colorManager.subscribe(setAppBackground);
 
-const picker = document.createElement('picker');
-picker.className = 'picker';
-app.appendChild(picker);
+const pickerContainer = document.createElement('div');
+pickerContainer.className = 'picker-container';
+app.appendChild(pickerContainer);
 
-picker.appendChild(pickPicker.render());
+pickerContainer.appendChild(picker.render());

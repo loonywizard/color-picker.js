@@ -1,9 +1,9 @@
-$saturation-brightness-width: 250px;
-$saturation-brightness-height: 150px;
+$saturation-brightness-picker-width: 250px;
+$saturation-brightness-picker-height: 150px;
 $saturation-brightness-border-radius: 5px;
 
-$hue-width: 250px;
-$hue-height: 14px;
+$hue-picker-width: 250px;
+$hue-picker-height: 14px;
 $hue-border-radius: 7px;
 
 $color-white: #fff;
@@ -30,7 +30,7 @@ html, body {
   align-items: center;
 }
 
-.picker {
+.picker-container {
   border-radius: 5px;
   background: $color-white;
   border: 1px solid rgba(0, 0, 0, 0.11);
@@ -39,8 +39,8 @@ html, body {
 
 .saturation-brightness-picker {
   position: relative;
-  width: $saturation-brightness-width;
-  height: $saturation-brightness-height;
+  width: $saturation-brightness-picker-width;
+  height: $saturation-brightness-picker-height;
   border-radius: $saturation-brightness-border-radius;
   background-color: white;
   margin-bottom: 20px;
@@ -49,23 +49,23 @@ html, body {
 .saturation-gradient {
   background: linear-gradient(to left, rgba(255, 255, 255, 0), $color-white);
   position: absolute;
-  width: $saturation-brightness-width;
-  height: $saturation-brightness-height;
+  width: $saturation-brightness-picker-width;
+  height: $saturation-brightness-picker-height;
   border-radius: $saturation-brightness-border-radius;
 }
 
 .brightness-gradient {
   background: linear-gradient(to bottom, transparent, $color-black);
   position: absolute;
-  width: $saturation-brightness-width;
-  height: $saturation-brightness-height;
+  width: $saturation-brightness-picker-width;
+  height: $saturation-brightness-picker-height;
   border-radius: $saturation-brightness-border-radius;
 }
 
 .hue-picker {
   position: relative;
-  width: $hue-width;
-  height: $hue-height;
+  width: $hue-picker-width;
+  height: $hue-picker-height;
   border-radius: $hue-border-radius;
   background: linear-gradient(
     to right, $color-red, $color-yellow, $color-green,

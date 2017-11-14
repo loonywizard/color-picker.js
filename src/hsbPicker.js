@@ -1,15 +1,16 @@
 import Hand from './hand';
 import {
-  PICKER_WIDTH,
-  PICKER_HEIGHT,
+  HUE_PICKER_WIDTH,
+  HUE_PICKER_HEIGHT,
   SATURATION_BRIGHTNESS_PICKER_HEIGHT,
+  SATURATION_BRIGHTNESS_PICKER_WIDTH,
   HUE_RANGE,
   SATURATION_RANGE,
   BRIGHTNESS_RANGE,
 } from './consts';
 
 function SaturationBrightnessPicker(colorManager) {
-  const pickerWidth = PICKER_WIDTH;
+  const pickerWidth = SATURATION_BRIGHTNESS_PICKER_WIDTH;
   const pickerHeight = SATURATION_BRIGHTNESS_PICKER_HEIGHT;
 
   const div = document.createElement('div');
@@ -75,22 +76,22 @@ function HuePicker(colorManager) {
   const hue = colorManager.getHue();
 
   const sliderPosition = {
-    x: hue * PICKER_WIDTH / HUE_RANGE.MAX,
-    y: PICKER_HEIGHT / 2,
+    x: hue * HUE_PICKER_WIDTH / HUE_RANGE.MAX,
+    y: HUE_PICKER_HEIGHT / 2,
   };
 
   function calculateHue(handPosition) {
-    colorManager.setHue(handPosition.x * HUE_RANGE.MAX / PICKER_WIDTH);
+    colorManager.setHue(handPosition.x * HUE_RANGE.MAX / HUE_PICKER_WIDTH);
   }
 
   const hand = new Hand({
     position: sliderPosition,
     movingArea: {
-      x: { from: 0, to: PICKER_WIDTH },
-      y: { from: PICKER_HEIGHT / 2, to: PICKER_HEIGHT / 2 }
+      x: { from: 0, to: HUE_PICKER_WIDTH },
+      y: { from: HUE_PICKER_HEIGHT / 2, to: HUE_PICKER_HEIGHT / 2 }
       },
     parent: div,
-    parentSize: { x: PICKER_WIDTH, y: PICKER_HEIGHT },
+    parentSize: { x: HUE_PICKER_WIDTH, y: HUE_PICKER_HEIGHT },
     onHandMove: calculateHue,
   });
 
@@ -99,7 +100,7 @@ function HuePicker(colorManager) {
   this.render = () => div;
 }
 
-export default function PickPicker(colorManager) {
+export default function HSBPicker(colorManager) {
   const div = document.createElement('div');
 
   const saturationBrightnessPicker = new SaturationBrightnessPicker(colorManager);

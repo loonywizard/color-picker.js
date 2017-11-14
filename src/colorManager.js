@@ -18,7 +18,7 @@ export default function ColorManager() {
     subscribers.forEach(cb => { cb(); });
   };
 
-  this.subscribe = (callback, values) => {
+  this.subscribe = (callback) => {
     subscribers.push(callback);
   };
 

@@ -6,7 +6,7 @@ export default function RGBDisplay(colorManager) {
   
   const updateHtml = () => {
     const { red, green, blue } = colorManager.getColorRGB();
-    div.innerHTML = convertRgbToString(red, green, blue);
+    div.innerHTML = convertRgbToString(red, green, blue).toUpperCase();
   };
 
   colorManager.subscribe(updateHtml);

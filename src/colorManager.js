@@ -18,14 +18,14 @@ export default function ColorManager() {
     subscribers.forEach((cb) => { cb(); });
   };
 
-  this.subscribe = (callback) => {
-    subscribers.push(callback);
-  };
-
   let hue = getRandomHue();
   let saturation = getRandomSaturation();
   let brightness = getRandomBrightness();
   let { red, green, blue } = convertHsbToRgb(hue, saturation, brightness);
+
+  this.subscribe = (callback) => {
+    subscribers.push(callback);
+  };
 
   this.getColorHSB = () => ({ hue, saturation, brightness });
   this.getColorRGB = () => ({ red, green, blue });

@@ -9,6 +9,7 @@ const picker = new HSBPicker(colorManager);
 const rgbDisplay = new RGBDisplay(colorManager);
 
 const app = document.getElementById('app');
+const pickerContainer = document.createElement('div');
 
 function setAppBackground() {
   const { red, green, blue } = colorManager.getColorRGB();
@@ -19,10 +20,8 @@ setAppBackground();
 
 colorManager.subscribe(setAppBackground);
 
-const pickerContainer = document.createElement('div');
-pickerContainer.className = 'picker-container';
-
 app.appendChild(pickerContainer);
 
+pickerContainer.className = 'picker-container';
 pickerContainer.appendChild(rgbDisplay.render());
 pickerContainer.appendChild(picker.render());

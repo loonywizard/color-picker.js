@@ -10,7 +10,6 @@
  *  parentSize: { x, y }
  *  onHandMove: a callback, that we should call, when hand was moved,
  *  we pass hand position to onHandMove
- * @constructor
  */
 export default function Hand(args) {
   const {
@@ -21,15 +20,15 @@ export default function Hand(args) {
     onHandMove,
   } = args;
 
-  let isDragging = false;
-
   const div = document.createElement('div');
-  div.className = 'hand';
-
   const setHandPosition = () => {
     div.style.top = `${position.y / parentSize.y * 100}%`;
     div.style.left = `${position.x / parentSize.x * 100}%`;
   };
+
+  let isDragging = false;
+
+  div.className = 'hand';
 
   setHandPosition();
 
@@ -55,10 +54,11 @@ export default function Hand(args) {
   };
 
   const handleMouseDown = (event) => {
-    isDragging = true;
     const rect = parent.getBoundingClientRect();
     const offsetX = rect.left;
     const offsetY = rect.top;
+
+    isDragging = true;
     changePosition({ x: event.clientX - offsetX, y: event.clientY - offsetY });
   };
 
@@ -71,6 +71,7 @@ export default function Hand(args) {
       const rect = parent.getBoundingClientRect();
       const offsetX = rect.left;
       const offsetY = rect.top;
+
       changePosition({ x: event.clientX - offsetX, y: event.clientY - offsetY });
     }
   };
@@ -80,10 +81,4 @@ export default function Hand(args) {
   document.addEventListener('mousemove', handleMouseMove);
 
   this.render = () => div;
-
-  this.destroy = () => {
-    parent.removeEventListener('mousedown', handleMouseDown);
-    document.removeEventListener('mouseup', handleMouseUp);
-    document.removeEventListener('mousemove', handleMouseMove);
-  };
 }

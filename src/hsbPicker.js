@@ -17,6 +17,11 @@ function SaturationBrightnessPicker(colorManager) {
   const saturationGradient = document.createElement('div');
   const brightnessGradient = document.createElement('div');
 
+  const updateColor = () => {
+    const hue = colorManager.getHue();
+    div.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+  };
+
   div.className = 'saturation-brightness-picker';
 
   saturationGradient.className = 'saturation-gradient';
@@ -24,11 +29,6 @@ function SaturationBrightnessPicker(colorManager) {
 
   brightnessGradient.className = 'brightness-gradient';
   div.appendChild(brightnessGradient);
-
-  const updateColor = () => {
-    const hue = colorManager.getHue();
-    div.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-  };
 
   updateColor();
 
